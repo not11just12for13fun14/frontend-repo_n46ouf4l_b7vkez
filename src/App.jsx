@@ -1,4 +1,6 @@
 function App() {
+  const backendUrl = import.meta.env.VITE_BACKEND_URL || 'http://localhost:8000'
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
       {/* Subtle pattern overlay */}
@@ -55,6 +57,39 @@ function App() {
                 <h3 className="font-semibold text-white mb-1">Refine and iterate</h3>
                 <p className="text-blue-200/80 text-sm">Continue the conversation to add features and make changes</p>
               </div>
+            </div>
+          </div>
+
+          {/* Connectivity helpers */}
+          <div className="bg-slate-800/50 backdrop-blur-sm border border-blue-500/20 rounded-2xl p-6 shadow-xl mb-8">
+            <h3 className="text-white font-semibold mb-3">Connectivity</h3>
+            <p className="text-blue-200/80 text-sm mb-4">Current backend URL detected:</p>
+            <p className="text-xs font-mono text-blue-200 bg-slate-900/60 p-3 rounded break-all mb-4">
+              {backendUrl}
+            </p>
+            <div className="flex flex-col sm:flex-row gap-3">
+              <a
+                href="/test"
+                className="inline-flex items-center justify-center px-4 py-2 rounded-lg bg-blue-500 hover:bg-blue-600 text-white font-semibold transition-colors"
+              >
+                Run Connectivity Test
+              </a>
+              <a
+                href={backendUrl}
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center justify-center px-4 py-2 rounded-lg bg-slate-700 hover:bg-slate-600 text-white font-semibold transition-colors"
+              >
+                Open Backend Root
+              </a>
+              <a
+                href={`${backendUrl.replace(/\/$/, '')}/api/hello`}
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center justify-center px-4 py-2 rounded-lg bg-slate-700 hover:bg-slate-600 text-white font-semibold transition-colors"
+              >
+                Open /api/hello
+              </a>
             </div>
           </div>
 
